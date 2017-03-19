@@ -1,0 +1,66 @@
+@echo off
+
+:start
+cls
+echo Select one on the regions.
+echo  1) for EUW 
+echo  2) for EUNE 
+echo  3) for NA 
+echo  4) for OCE 
+echo  5) for OCE 	
+set /p number=	
+
+if %number%==1 goto :EUW
+if %number%==2 goto :EUE
+if %number%==3 goto :NA
+if %number%==4 goto :OCE
+if %number%==5 goto :LAN
+
+if %number% NEQ 1 goto :start 
+if %number% NEQ 2 goto :start
+if %number% NEQ 3 goto :start
+if %number% NEQ 4 goto :start
+if %number% NEQ 5 goto :start
+
+:EUW
+ping 104.160.141.3
+goto :option
+
+:EUE 
+ping 104.160.142.3
+goto :option
+
+:NA
+ping 104.160.131.3
+goto :option
+
+:OCE
+ping 104.160.156.3
+goto :option
+
+:LAN
+ping 104.160.136.3
+goto :option
+
+REM    NA - 104.160.131.3
+REM    EUW - 104.160.141.3
+REM    EUNE - 104.160.142.3
+REM    OCE - 104.160.156.1
+REM    LAN - 104.160.136.3
+
+
+:option
+set /a number=%number% * 0
+set /p opt= enter Y to exit N to go to start	
+
+if %opt%==Y goto :END
+if %opt%==N goto :start
+if %opt%==y goto :END
+if %opt%==n goto :start
+REM ---------------------
+if %opt% NEQ Y goto :option 
+if %opt% NEQ y goto :option 
+if %opt% NEQ n goto :option 
+if %opt% NEQ N goto :option 
+
+:End
